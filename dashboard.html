@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <title>لوحة التحكم</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(270deg, #1e1e1e, #111, #1e1e1e);
+      background-size: 400% 400%;
+      animation: backgroundMove 20s ease infinite;
+      font-family: 'Cairo', sans-serif;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 60px 20px;
+      overflow-x: hidden;
+    }
+
+    @keyframes backgroundMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    h2 {
+      font-size: 3.5rem;
+      background: linear-gradient(90deg, #00ffe1, #00bfff, #00ffe1);
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shineText 6s ease infinite, float 3s ease-in-out infinite;
+      margin-bottom: 20px;
+    }
+
+    @keyframes shineText {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    form {
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(10px);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0,255,225,0.2);
+      margin-top: 30px;
+      width: 100%;
+      max-width: 500px;
+      animation: fadeInUp 1.5s ease forwards;
+      opacity: 0;
+    }
+
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+      color: #00ffe1;
+      font-size: 1.1rem;
+    }
+
+    input[type="text"],
+    input[type="file"] {
+      background: #222;
+      border: 1px solid #333;
+      color: #eee;
+      padding: 12px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      width: 100%;
+      transition: border-color 0.3s;
+    }
+
+    input:focus {
+      border-color: #00ffe1;
+      outline: none;
+    }
+
+    button {
+      background: linear-gradient(45deg, #00ffe1, #00bfff);
+      border: none;
+      padding: 12px 30px;
+      border-radius: 12px;
+      font-weight: bold;
+      color: #000;
+      cursor: pointer;
+      transition: 0.3s;
+      width: 100%;
+      box-shadow: 0 4px 15px rgba(0,255,225,0.4);
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      background: linear-gradient(45deg, #00bfff, #00ffe1);
+    }
+
+    .message {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 12px;
+      background: #111;
+      color: #00ffe1;
+      box-shadow: 0 0 15px #00ffe1;
+      animation: pulse 2s infinite;
+      text-align: center;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 10px #00ffe1; }
+      50% { box-shadow: 0 0 30px #00ffe1; }
+    }
+
+    h3 {
+      margin-top: 50px;
+      font-size: 2.5rem;
+      color: #00ffe1;
+      animation: fadeInUp 2s ease forwards;
+      opacity: 0;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 20px;
+      width: 100%;
+      max-width: 600px;
+    }
+
+    li {
+      margin: 12px 0;
+      background: #2a2a2a;
+      padding: 15px 20px;
+      border-radius: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: 0.3s;
+      animation: fadeIn 1.6s ease forwards;
+      opacity: 0;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    li:hover {
+      background: #333;
+      transform: scale(1.02);
+    }
+
+    a {
+      color: #00ffe1;
+      text-decoration: none;
+      font-weight: bold;
+      margin: 0 5px;
+    }
+
+    a:hover {
+      color: #00bfff;
+    }
+
+    .stop-button {
+      background: linear-gradient(45deg, #ff4e50, #f9d423);
+      padding: 5px 15px;
+      border-radius: 8px;
+      color: #000;
+      font-weight: bold;
+    }
+
+    .restart-button {
+      background: linear-gradient(45deg, #ffa500, #ff7f50);
+      padding: 5px 15px;
+      border-radius: 8px;
+      color: #000;
+      font-weight: bold;
+    }
+
+    .restart-button:hover {
+      background: linear-gradient(45deg, #ff7f50, #ffa500);
+    }
+
+    .link-container {
+      margin-top: 40px;
+      animation: fadeInUp 2s ease forwards;
+      opacity: 0;
+    }
+
+    .link-container a {
+      background: linear-gradient(45deg, #00ffe1, #00bfff);
+      padding: 12px 25px;
+      border-radius: 12px;
+      font-size: 1.2rem;
+      color: #000;
+      box-shadow: 0 4px 15px rgba(0,255,225,0.4);
+      display: inline-block;
+      transition: 0.3s;
+    }
+
+    .link-container a:hover {
+      transform: scale(1.05);
+    }
+
+    .marquee-message {
+      margin-top: 30px;
+      width: 100%;
+      background: #111;
+      color: #00ffe1;
+      font-weight: bold;
+      padding: 10px;
+      overflow: hidden;
+      border-radius: 12px;
+    }
+
+    .marquee-message p {
+      display: inline-block;
+      white-space: nowrap;
+      animation: scrollLeft 15s linear infinite;
+      font-size: 1.4rem;
+    }
+
+    @keyframes scrollLeft {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+  </style>
+</head>
+<body>
+
+  <h2>لوحة تحكم السكربتات</h2>
+
+  <div class="marquee-message">
+    <p>مرحبا بك في لوحة تحكم السكربتات - HOSTING PYTHON FREE VIP</p>
+  </div>
+
+  <form method="POST">
+    <label for="package_name">ادخل اسم المكتبة:</label>
+    <input type="text" id="package_name" name="package_name" required />
+    <button type="submit">تثبيت</button>
+  </form>
+
+  {% if message %}
+  <div class="message">
+    <p>{{ message }}</p>
+  </div>
+  {% endif %}
+
+  <form action="/upload" method="POST" enctype="multipart/form-data">
+    <input type="file" name="file" />
+    <button type="submit">رفع ملف</button>
+  </form>
+
+  <h3>السكربتات المرفوعة:</h3>
+  <ul>
+    {% for file in files %}
+    <li>
+      {{ file }}
+      <span>
+        <a href="/run/{{ file }}">تشغيل</a> |
+        <a href="/restart/{{ file }}" class="restart-button">اعادة تشغيل</a> |
+        <a href="/stop/{{ file }}" class="stop-button">ايقاف</a>
+      </span>
+    </li>
+    {% endfor %}
+  </ul>
+
+  <div class="link-container">
+    <a href="/speed">تشغيل اختبار السرعة</a>
+  </div>
+
+</body>
+</html>

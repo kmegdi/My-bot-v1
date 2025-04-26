@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>سجلات السكربتات</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #e3f2fd, #f1f8e9);
+            padding: 30px;
+            text-align: center;
+            color: #2c3e50;
+        }
+        h2 {
+            color: #1e88e5;
+            margin-bottom: 10px;
+        }
+        .info-box {
+            margin: 10px auto;
+            background: #ffffffcc;
+            padding: 10px;
+            border-radius: 8px;
+            width: 80%;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            margin: 10px 0;
+            background: #fff;
+            padding: 10px;
+            border-radius: 6px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+        li:hover {
+            transform: scale(1.02);
+        }
+        a {
+            text-decoration: none;
+            color: #039be5;
+            font-weight: bold;
+        }
+        .back-link {
+            margin-top: 20px;
+            display: inline-block;
+            padding: 10px 20px;
+            background: #42a5f5;
+            color: white;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        .back-link:hover {
+            background: #1e88e5;
+        }
+    </style>
+</head>
+<body>
+    <h2>قائمة السجلات</h2>
+
+    <!-- 4 أسطر معلومات إضافية -->
+    <div class="info-box">عدد السجلات: {{ logs|length }}</div>
+    <div class="info-box">آخر سجل: {{ logs[-1] if logs else "لا يوجد" }}</div>
+    <div class="info-box">الوقت الحالي: {{ current_time }}</div>
+    <div class="info-box">اضغط على "عرض" لقراءة السجل كاملاً</div>
+
+    <ul>
+        {% for log in logs %}
+        <li>
+            {{ log }} —
+            <a href="/log/{{ log.replace('_log.txt', '') }}">عرض</a>
+        </li>
+        {% else %}
+        <li>لا توجد سجلات حالياً.</li>
+        {% endfor %}
+    </ul>
+
+    <a class="back-link" href="/dashboard">رجوع إلى اللوحة</a>
+</body>
+</html>

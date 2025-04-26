@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>قبل رفع الملف</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #000000, #222222);
+      color: white;
+      font-family: 'Courier New', monospace;
+      animation: backgroundColorChange 5s linear infinite;
+      margin: 0;
+      padding: 0;
+    }
+
+    @keyframes backgroundColorChange {
+      0% { background: linear-gradient(135deg, #000000, #222222); }
+      50% { background: linear-gradient(135deg, #6a11cb, #2575fc); }
+      100% { background: linear-gradient(135deg, #000000, #222222); }
+    }
+
+    h1, h2 {
+      text-align: center;
+      animation: textGlow 1.5s ease-in-out infinite alternate;
+    }
+
+    h1 {
+      font-size: 2.5em;
+    }
+
+    h2 {
+      font-size: 1.5em;
+    }
+
+    .animated-text {
+      animation: pulse 1s infinite alternate;
+    }
+
+    @keyframes pulse {
+      from { color: #fff; }
+      to { color: #00ffcc; }
+    }
+
+    ul {
+      padding: 0 20px;
+      list-style-type: none;
+    }
+
+    ul li {
+      padding: 8px 0;
+      font-size: 1.2em;
+      animation: fadeInUp 0.5s ease-in-out;
+    }
+
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    a {
+      display: block;
+      text-align: center;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #00ffcc;
+      color: black;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 1.2em;
+      transition: background-color 0.3s ease;
+    }
+
+    a:hover {
+      background-color: #ff007f;
+    }
+  </style>
+</head>
+<body>
+  <h1 class="animated-text">مرحبا بك في استضافة XZANJA</h1>
+  <h2>قبل رفع أي سكربت يرجى الانتباه:</h2>
+  <ul>
+    <li>1. السكربت لازم يكون بلغة Python فقط.</li>
+    <li>2. السكربتات الخبيثة يتم حذفها فورًا.</li>
+    <li>3. لا تتحمّل الإدارة مسؤولية أي ضرر.</li>
+    <li>4. ممنوع استغلال الاستضافة لشن هجمات.</li>
+    <li>5. الدعم متاح عبر بوت التليجرام.</li>
+    <li>6. الملفات المدعومة: {{ allowed }}</li>
+    <li>7. عند رفع الملف سيتم تشغيله تلقائيًا.</li>
+    <li>8. لكل سكربت Log خاص به.</li>
+    <li>9. يمكنك اختبار سرعة الخادم.</li>
+    <li>10. الرفع يتم من خلال /dashboard.</li>
+    <li>11. يجب احترام القوانين العامة.</li>
+    <li>12. كن محترف وشاركنا إبداعاتك!</li>
+  </ul>
+  <a href="/dashboard">توجه للوحة التحكم</a>
+</body>
+</html>
